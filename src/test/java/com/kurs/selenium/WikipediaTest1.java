@@ -8,7 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class FirstTest_GoogleTest {
+public class WikipediaTest1 {
+
     private WebDriver driver;
 
     @Before
@@ -17,20 +18,20 @@ public class FirstTest_GoogleTest {
                 "src/test/resources/geckodriver");
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
-        driver.get("http://www.google.com");
+
     }
 
     @Test
-    public void testGoogleSearch() {
-        WebElement element = driver.findElement(By.name("q"));
-        element.clear();
-        element.sendKeys("Testowanie Selenium");
-        element.submit();
+    public void WikipediaTest() {
+
+        driver.get("https://pl.wikipedia.org/");
+        WebElement element = driver.findElement(By.id("main-page-column1"));
+        System.out.println(element.getText());
     }
 
     @After
     public void tearDown() throws Exception {
-        // driver.quit();
+        driver.quit();
     }
 
 }

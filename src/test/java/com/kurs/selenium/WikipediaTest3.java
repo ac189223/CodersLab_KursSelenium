@@ -5,10 +5,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class FirstTest_GoogleTest {
+public class WikipediaTest3 {
+
     private WebDriver driver;
 
     @Before
@@ -17,20 +17,20 @@ public class FirstTest_GoogleTest {
                 "src/test/resources/geckodriver");
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
-        driver.get("http://www.google.com");
+        
     }
 
     @Test
-    public void testGoogleSearch() {
-        WebElement element = driver.findElement(By.name("q"));
-        element.clear();
-        element.sendKeys("Testowanie Selenium");
-        element.submit();
+    public void WikipediaTest() {
+
+        driver.get("https://pl.wikipedia.org/");
+        String tag = driver.findElement(By.id("main-page-content")).getTagName();
+        System.out.println(tag);
     }
 
     @After
     public void tearDown() throws Exception {
-        // driver.quit();
+        driver.quit();
     }
 
 }
