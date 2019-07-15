@@ -1,4 +1,4 @@
-package com.kurs.selenium;
+package com.kurs.selenium.WikipediaTests;
 
 import org.junit.After;
 import org.junit.Before;
