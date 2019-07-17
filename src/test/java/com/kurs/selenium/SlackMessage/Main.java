@@ -128,10 +128,16 @@ public class Main {
 
     // Send message module
     private void sendMessages() {
-        // List of all possible people to send it
+        // List of all possible people to send it =-_-=
 //        List<WebElement> listOfUsersToSend = driver.findElements(By.cssSelector("span.p-channel_sidebar__name span"));
 //        for (WebElement user : listOfUsers) {
 //            System.out.println(user.getText());
+//            WebElement location = driver.findElement(By.cssSelector("div.p-channel_sidebar__static_list"));
+//            WebElement userToSend = location.findElement(By.partialLinkText(user.getText()));
+//            userToSend.click();
+//            WebElement inputField = driver.findElement(By.cssSelector("div.client_toolbar"));
+//            WebElement input = inputField.findElement(By.xpath("./div"));
+//            input.sendKeys("*****  Auto Test Msg  ***** \n" );
 //        }
 
         // Go to msg page
