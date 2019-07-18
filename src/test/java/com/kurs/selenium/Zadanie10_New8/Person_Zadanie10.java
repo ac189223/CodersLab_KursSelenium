@@ -1,4 +1,4 @@
-package com.kurs.selenium;
+package com.kurs.selenium.Zadanie10_New8;
 
 public class Person_Zadanie10 {
 

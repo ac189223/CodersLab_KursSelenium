@@ -1,4 +1,4 @@
-package com.kurs.selenium;
+package com.kurs.selenium.Zadanie8;
 
 // Import of needed parts of packages
 import org.junit.After;
