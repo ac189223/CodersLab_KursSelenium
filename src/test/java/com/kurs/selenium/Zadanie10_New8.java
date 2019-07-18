@@ -26,65 +26,195 @@ public class Zadanie10_New8 {
     }
 
     @Test
-    public void  TestKatalonForm() {
+    public void TestKatalonForm() {
+
+        String inputText = "";
+        String inputText2 = "";
+        String labelText = "";
+        int i;
+        int timesMale = 0;
+        int timesFemale = 0;
+        int timesInBetween = 0;
+        int iRole = 0;
+        int iJobExpectation = 0;
+        int iWaysOfDevelopment = 0;
+
+        // First name
         WebElement firstNameElement = driver.findElement(By.id("first-name"));
+        Assert.assertTrue(firstNameElement.isDisplayed());
+        Assert.assertTrue(firstNameElement.isEnabled());
+        WebElement firstNameLabel = firstNameElement.findElement(By.xpath("./../../label"));
+        labelText = firstNameLabel.getText();
+        inputText = "Jan";
+        System.out.println(labelText + " : " + inputText);
         firstNameElement.click();
-        firstNameElement.sendKeys("Jan");
+        firstNameElement.sendKeys(inputText);
+
+        // Last name
         WebElement lastNameElement = driver.findElement(By.id("last-name"));
+        Assert.assertTrue(lastNameElement.isDisplayed());
+        Assert.assertTrue(lastNameElement.isEnabled());
+        WebElement lastNameLabel = lastNameElement.findElement(By.xpath("./../../label"));
+        labelText = lastNameLabel.getText();
+        inputText = "Kowalski";
+        System.out.println(labelText + " : " + inputText);
         lastNameElement.click();
-        lastNameElement.sendKeys("Kowalski");
+        lastNameElement.sendKeys(inputText);
+
+        // Gender
         List<WebElement> genderElements = driver.findElements(By.name("gender"));
-        genderElements.get(1).click();
+        for (i = 0; i < genderElements.size(); i++) {
+            Assert.assertTrue(genderElements.get(i).isDisplayed());
+            Assert.assertTrue(genderElements.get(i).isEnabled());
+        }
+        i = randomGender(timesMale, timesFemale, timesInBetween);
+        switch (i) {
+            case 0:
+                timesMale++;
+            case 1:
+                timesFemale++;
+            case 2:
+                timesInBetween++;
+        }
+        WebElement genderElement = genderElements.get(i);
+        WebElement genderElementLabel = genderElement.findElement(By.xpath("./.."));
+        inputText = genderElementLabel.getText();
+        WebElement genderLabel = genderElement.findElement(By.xpath("./../../../../label"));
+        labelText = genderLabel.getText();
+        System.out.println(labelText + " : " + inputText);
+        genderElements.get(i).click();
+
+        // Date of birth
         WebElement dateOfBirthElement = driver.findElement(By.id("dob"));
+        Assert.assertTrue(dateOfBirthElement.isDisplayed());
+        Assert.assertTrue(dateOfBirthElement.isEnabled());
+        WebElement dateOfBirthLabel = dateOfBirthElement.findElement(By.xpath("./../../label"));
+        labelText = dateOfBirthLabel.getText();
+        inputText = "05/22/2010";
+        System.out.println(labelText + " : " + inputText);
         dateOfBirthElement.click();
-        dateOfBirthElement.sendKeys("05/22/2010");
+        dateOfBirthElement.sendKeys(inputText);
+
+        // Adderss
         WebElement addressElement = driver.findElement(By.id("address"));
+        Assert.assertTrue(addressElement.isDisplayed());
+        Assert.assertTrue(addressElement.isEnabled());
+        WebElement addressLabel = addressElement.findElement(By.xpath("./../../label"));
+        labelText = addressLabel.getText();
+        inputText = "Prosta 51";
+        System.out.println(labelText + " : " + inputText);
         addressElement.click();
-        addressElement.sendKeys("Prosta 51");
+        addressElement.sendKeys(inputText);
+
+        // Email
         WebElement emailElement = driver.findElement(By.id("email"));
+        Assert.assertTrue(emailElement.isDisplayed());
+        Assert.assertTrue(emailElement.isEnabled());
+        WebElement emailLabel = emailElement.findElement(By.xpath("./../../label"));
+        labelText = emailLabel.getText();
+        inputText = "karol.kowalski@mailinator.com";
+        System.out.println(labelText + " : " + inputText);
         emailElement.click();
-        emailElement.sendKeys("karol.kowalski@mailinator.com");
+        emailElement.sendKeys(inputText);
+
+        // Password
         WebElement passwordElement = driver.findElement(By.id("password"));
+        Assert.assertTrue(passwordElement.isDisplayed());
+        Assert.assertTrue(passwordElement.isEnabled());
+        WebElement passwordLabel = passwordElement.findElement(By.xpath("./../../label"));
+        labelText = passwordLabel.getText();
+        inputText = "Pass123";
+        System.out.println(labelText + " : " + inputText);
         passwordElement.click();
-        passwordElement.sendKeys("Pass123");
+        passwordElement.sendKeys(inputText);
+
+        // Company
         WebElement companyElement = driver.findElement(By.id("company"));
+        Assert.assertTrue(companyElement.isDisplayed());
+        Assert.assertTrue(companyElement.isEnabled());
+        WebElement companyLabel = companyElement.findElement(By.xpath("./../../label"));
+        labelText = companyLabel.getText();
+        inputText = "Coders Lab";
+        System.out.println(labelText + " : " + inputText);
         companyElement.click();
-        companyElement.sendKeys("Coders Lab");
+        companyElement.sendKeys(inputText);
 
-        // Select of role
+        // Role - select an item from a list
+        WebElement roleElement = driver.findElement(By.id("role"));
+        List<WebElement> roleElementsList = roleElement.findElements(By.xpath("./option"));
+        for (i = 0; i < roleElementsList.size(); i++) {
+            Assert.assertTrue(roleElementsList.get(i).isDisplayed());
+            Assert.assertTrue(roleElementsList.get(i).isEnabled());
+        }
+        WebElement roleLabel = roleElement.findElement(By.xpath("./../../label"));
+        labelText = roleLabel.getText();
+        inputText = roleElementsList.get(iRole % roleElementsList.size()).getText();
+        System.out.println(labelText + " : " + inputText);
         Select roleSelect = new Select(driver.findElement(By.id("role")));
-        roleSelect.selectByVisibleText("Manager");
+        roleSelect.selectByVisibleText(inputText);
+        iRole++;
 
-        // Select of job expectation
-        Select expectationSelect = new Select(driver.findElement(By.id("expectation")));
-        expectationSelect.selectByVisibleText("High salary");
-        expectationSelect.selectByVisibleText("Good teamwork");
+        // Job expectation - select two items from a list
+        WebElement jobExpectationElement = driver.findElement(By.id("expectation"));
+        List<WebElement> jobExpectationElementsList = jobExpectationElement.findElements(By.xpath("./option"));
+        for (i = 0; i < jobExpectationElementsList.size(); i++) {
+            Assert.assertTrue(jobExpectationElementsList.get(i).isDisplayed());
+            Assert.assertTrue(jobExpectationElementsList.get(i).isEnabled());
+        }
+        WebElement jobExpectationLabel = jobExpectationElement.findElement(By.xpath("./../../label"));
+        labelText = jobExpectationLabel.getText();
+        inputText = jobExpectationElementsList.get(iJobExpectation % jobExpectationElementsList.size()).getText();
+        inputText2 = jobExpectationElementsList.get((iJobExpectation + 1) % jobExpectationElementsList.size()).getText();
+        System.out.println(labelText + " : " + inputText + ", " + inputText2);
+        Select jobExpectationSelect = new Select(driver.findElement(By.id("expectation")));
+        jobExpectationSelect.selectByVisibleText(inputText);
+        jobExpectationSelect.selectByVisibleText(inputText2);
+        iJobExpectation++;
 
-//        // Select of job expectation
+//        // Job expectations - another version
 //        Select expectationSelect = new Select(driver.findElement(By.id("expectation")));
 //        expectationSelect.selectByIndex(1);
 //        expectationSelect.selectByIndex(2);
 
-//        // Select of job expectation
-//        // .get(5) to .get(11)
+//        // Job expectation - another version with available .get(5) to .get(11)
 //        List<WebElement> jobExpectationElements = driver.findElements(By.xpath("//option"));
 //        jobExpectationElements.get(6).click();
 //        jobExpectationElements.get(8).click();
 
-        // List of checkboxes - we would have to omit three "input" that are for gender
-        // we would have from .get(3) to .get(8)
-        // But we found first "div" around our "input" and we have just ours !
-        WebElement developmentWays = driver.findElement(By.cssSelector("div.col-sm-10.development-ways"));
-        List<WebElement> waysOfDevelopmentElements = developmentWays.findElements(By.xpath(".//input"));
-        waysOfDevelopmentElements.get(0).click();
-        waysOfDevelopmentElements.get(1).click();
+        // Ways of development - select two from available ones
+        WebElement waysOfDevelopment = driver.findElement(By.cssSelector("div.col-sm-10.development-ways"));
+        List<WebElement> waysOfDevelopmentElementsList = waysOfDevelopment.findElements(By.xpath(".//input"));
+        for (i = 0; i < waysOfDevelopmentElementsList.size(); i++) {
+            Assert.assertTrue(waysOfDevelopmentElementsList.get(i).isDisplayed());
+            Assert.assertTrue(waysOfDevelopmentElementsList.get(i).isEnabled());
+        }
+        WebElement waysOfDevelopmentLabel = waysOfDevelopment.findElement(By.xpath("./../label"));
+        labelText = waysOfDevelopmentLabel.getText();
+        int i1 = iWaysOfDevelopment % waysOfDevelopmentElementsList.size();
+        int i2 = (iWaysOfDevelopment + 1) % waysOfDevelopmentElementsList.size();
+        List<WebElement> waysOfDevelopmentElementsNames = waysOfDevelopment.findElements(By.xpath(".//label"));
+        inputText = waysOfDevelopmentElementsNames.get(i1).getText();
+        inputText2 = waysOfDevelopmentElementsNames.get(i2).getText();
+        System.out.println(labelText + " : " + inputText + ", " + inputText2);
+        waysOfDevelopmentElementsList.get(i1).click();
+        waysOfDevelopmentElementsList.get(i2).click();
+        iWaysOfDevelopment++;
 
+        // Comment
         WebElement commentElement = driver.findElement(By.id("comment"));
+        Assert.assertTrue(commentElement.isDisplayed());
+        Assert.assertTrue(commentElement.isEnabled());
+        WebElement commentLabel = commentElement.findElement(By.xpath("./../../label"));
+        labelText = commentLabel.getText();
+        inputText = "This is my first test automate";
+        System.out.println(labelText + " : " + inputText);
         commentElement.click();
-        commentElement.sendKeys("To jest mój pierwszy automat testowy");
+        commentElement.sendKeys(inputText);
 
         // Send form
         WebElement submitButton = driver.findElement(By.id("submit"));
+        Assert.assertTrue(firstNameElement.isDisplayed());
+        Assert.assertTrue(firstNameElement.isEnabled());
         submitButton.click();
         // Wait for loading of page
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -92,8 +222,20 @@ public class Zadanie10_New8 {
         // Test check - if confirmation text is visible
         WebElement confirmation = driver.findElement(By.className("submit-msg"));
         Boolean conf = confirmation.isDisplayed();
-        System.out.println(conf);
+        if (conf) {
+            System.out.println("* * * * * * * * * * * * * * * \n Form was send with success \n* * * * * * * * * * * * * * *");
+        }
         Assert.assertTrue(conf);
+    }
+
+    private int randomGender(int timesM, int timesF, int timesIB) {
+        if (timesM <= timesF && timesM <= timesIB) {
+            return 0;
+        } else if (timesF <= timesIB) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
 
     @After
