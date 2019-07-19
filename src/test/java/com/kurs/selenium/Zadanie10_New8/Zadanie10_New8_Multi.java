@@ -203,8 +203,8 @@ public class Zadanie10_New8_Multi {
 
             // Send form
             WebElement submitButton = driver.findElement(By.id("submit"));
-            Assert.assertTrue(firstNameElement.isDisplayed());
-            Assert.assertTrue(firstNameElement.isEnabled());
+            Assert.assertTrue(submitButton.isDisplayed());
+            Assert.assertTrue(submitButton.isEnabled());
             submitButton.click();
             // Wait for loading of page
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
