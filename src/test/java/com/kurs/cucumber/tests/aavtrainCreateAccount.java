@@ -1,5 +1,6 @@
 package com.kurs.cucumber.tests;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class aavtrainCreateAccount {
     private WebDriver driver;
 
-    @Given("^an open browser with http://aavtrain\\.com/$")
+    @Given("^an open browser with http://aavtrain\\.com/ aca_feature$")
     public void anOpenBrowserWithHttpAavtrainCom() {
         // Configure of drivers for webBrowser
         System.setProperty("webdriver.gecko.driver",
@@ -27,7 +28,7 @@ public class aavtrainCreateAccount {
         driver.get("http://aavtrain.com/");
     }
 
-    @When("^button First Time Students Register Here is clicked$")
+    @When("^button First Time Students Register Here is clicked aca_feature$")
     public void buttonFirstTimeStudentsRegisterHereIsClicked() {
         // Find user creation button
         WebElement element = (driver.findElement(By.cssSelector("div.bodytxt")).findElement(By.xpath(".//a")));
@@ -37,13 +38,13 @@ public class aavtrainCreateAccount {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @Then("^form on https://aavtrain\\.com/create_user\\.asp opens$")
+    @Then("^form on https://aavtrain\\.com/create_user\\.asp opens aca_feature$")
     public void formOnHttpsAavtrainComCreate_userAspOpens() {
         // Check if current url is an expected one
-        Assert.assertTrue(driver.getCurrentUrl().equals("https://aavtrain.com/create_user.asp"));
+        Assert.assertEquals("https://aavtrain.com/create_user.asp", driver.getCurrentUrl());
     }
 
-    @When("^user fills in all required fields$")
+    @And("^user fills in all required fields aca_feature$")
     public void userFillsInAllRequiredFields() {
         // Input data
         driver.findElement(By.name("first_name")).sendKeys("James");
@@ -57,23 +58,23 @@ public class aavtrainCreateAccount {
         driver.findElement(By.name("password")).sendKeys("jambut123");
     }
 
-    @Then("^click Submit button$")
+    @And("^click Submit button aca_feature$")
     public void clickSubmitButton() {
         // Click submit
         driver.findElement(By.name("Submit")).click();
     }
 
-    @When("^error is displayed$")
+    @Then("^error is displayed aca_feature$")
     public void errorIsDisplayed() {
         // Find error message element (bold)
         WebElement element = (driver.findElement(By.cssSelector("div.errortextB")).findElement(By.xpath(".//strong")));
         // Check if message is an expected one
-        Assert.assertTrue(element.getText().equals("The password you have entered is not valid or has already been used,\n" +
+        Assert.assertEquals("The password you have entered is not valid or has already been used,\n" +
                 "please check your password and try again.\n" +
-                "If this problem persists, contact your instructor."));
+                "If this problem persists, contact your instructor.", element.getText());
     }
 
-    @Then("^close web browser$")
+    @And("^close web browser aca_feature$")
     public void closeWebBrowser() {
         //Close webBrowser
         driver.quit();

@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class GoogleSearch {
     private WebDriver driver;
 
-    @Given("^an open browser with google\\.com$")
+    @Given("^an open browser with google\\.com gts_feature$")
     public void anOpenBrowserWithGoogleCom() {
         // Skonfiguruj sterownik przeglądarki
         System.setProperty("webdriver.gecko.driver",
@@ -29,7 +29,7 @@ public class GoogleSearch {
         driver.get("http://www.google.com");
     }
 
-    @When("^a keyword selenium is entered in input field$")
+    @When("^a keyword selenium is entered in input field gts_feature$")
     public void aKeywordSeleniumIsEnteredInInputField() {
         // Znajdź element wprowadzania tekstu na podstawie jego nazwy
         WebElement element = driver.findElement(By.name("q"));
@@ -43,7 +43,7 @@ public class GoogleSearch {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @Then("^the first one should contain selenium$")
+    @Then("^the first one should contain selenium gts_feature$")
     public void theFirstOneShouldContainSelenium() {
         // Wybierz pierwszy element wyszukania
         WebElement element = (driver.findElement(By.cssSelector("div.r")).findElement(By.xpath(".//h3")));
@@ -51,7 +51,7 @@ public class GoogleSearch {
         Assert.assertTrue(element.getText().toLowerCase().contains("selenium"));
     }
 
-        @And("^close browser$")
+        @And("^close browser gts_feature$")
     public void closeBrowser() {
         // Zamknij przeglądarkę
         driver.quit();

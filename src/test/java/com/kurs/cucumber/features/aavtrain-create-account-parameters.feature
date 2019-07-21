@@ -2,19 +2,19 @@ Feature: Aavtrain user creation
 
   Scenario Outline: user can create an account on website
 
-    Given an open browser with http://aavtrain.com/
+    Given an open browser with http://aavtrain.com/ acap_feature
 
-    When button First Time Students Register Here is clicked
+    When button First Time Students Register Here is clicked acap_feature
 
-    Then form on https://aavtrain.com/create_user.asp opens
+    Then form on https://aavtrain.com/create_user.asp opens acap_feature
 
-    When user fills in required fields: first name <firstName>, last name <lastName>, email <email>, user name <userName>, address <address>, city <city>, state <state>, zip code <zipCode>, password <password>
+    And user fills in required fields: first name <firstName>, last name <lastName>, email <email>, user name <userName>, address <address>, city <city>, state <state>, zip code <zipCode>, password <password>  acap_feature
 
-    Then click Submit button
+    And click Submit button acap_feature
 
-    When error is displayed
+    Then error is displayed acap_feature
 
-    Then close web browser
+    And close web browser acap_feature
 
     Examples:
       |firstName |lastName |email                        |userName |address             |city        |state |zipCode |password  |

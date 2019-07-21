@@ -2,16 +2,16 @@ Feature: Aavtrain user creation
 
   Scenario: user can create an account on website
 
-    Given an open browser with http://aavtrain.com/
+    Given an open browser with http://aavtrain.com/ aca_feature
 
-    When button First Time Students Register Here is clicked
+    When button First Time Students Register Here is clicked aca_feature
 
-    Then form on https://aavtrain.com/create_user.asp opens
+    Then form on https://aavtrain.com/create_user.asp opens aca_feature
 
-    When user fills in all required fields
+    And user fills in all required fields aca_feature
 
-    Then click Submit button
+    And click Submit button aca_feature
 
-    When error is displayed
+    Then error is displayed aca_feature
 
-    Then close web browser
+    And close web browser aca_feature

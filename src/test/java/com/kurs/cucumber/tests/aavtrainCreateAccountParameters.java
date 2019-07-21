@@ -1,5 +1,6 @@
 package com.kurs.cucumber.tests;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class aavtrainCreateAccountParameters {
     private WebDriver driver;
 
-    @Given("^an open browser with http://aavtrain\\.com/ P")
+    @Given("^an open browser with http://aavtrain\\.com/ acap_feature")
     public void anOpenBrowserWithHttpAavtrainComP() {
         // Configure of drivers for webBrowser
         System.setProperty("webdriver.gecko.driver",
@@ -27,7 +28,7 @@ public class aavtrainCreateAccountParameters {
         driver.get("http://aavtrain.com/");
     }
 
-    @When("^button First Time Students Register Here is clicked P")
+    @When("^button First Time Students Register Here is clicked acap_feature")
     public void buttonFirstTimeStudentsRegisterHereIsClickedP() {
         // Find user creation button
         WebElement element = (driver.findElement(By.cssSelector("div.bodytxt")).findElement(By.xpath(".//a")));
@@ -37,17 +38,14 @@ public class aavtrainCreateAccountParameters {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @Then("^form on https://aavtrain\\.com/create_user\\.asp opens P")
+    @Then("^form on https://aavtrain\\.com/create_user\\.asp opens acap_feature")
     public void formOnHttpsAavtrainComCreate_userAspOpensP() {
         // Check if current url is an expected one
         Assert.assertEquals("https://aavtrain.com/create_user.asp", driver.getCurrentUrl());
     }
 
-    @When("^user fills in required fields: first name (.*), last name (.*), email (.*), user name (.*), address (.*), city (.*), state (.*), zip code (.*), password (.*)$")
+    @And("^user fills in required fields: first name (.*), last name (.*), email (.*), user name (.*), address (.*), city (.*), state (.*), zip code (.*), password (.*) acap_feature$")
     public void userFillsInRequiredFieldsP(String  firstName, String lastName, String email, String userName, String address, String city, String state, String zipCode, String password) {
-        //
-//        driver = new FirefoxDriver();
-//        driver.get("https://aavtrain.com/create_user.asp");
          // Input data
         driver.findElement(By.name("first_name")).sendKeys(firstName);
         driver.findElement(By.name("last_name")).sendKeys(lastName);
@@ -60,13 +58,13 @@ public class aavtrainCreateAccountParameters {
         driver.findElement(By.name("password")).sendKeys(password);
     }
 
-    @Then("^click Submit button P")
+    @And("^click Submit button acap_feature")
     public void clickSubmitButtonP() {
         // Click submit
         driver.findElement(By.name("Submit")).click();
     }
 
-    @When("^error is displayed P")
+    @Then("^error is displayed acap_feature")
     public void errorIsDisplayedP() {
         // Find error message element (bold)
         WebElement element = (driver.findElement(By.cssSelector("div.errortextB")).findElement(By.xpath(".//strong")));
@@ -76,7 +74,7 @@ public class aavtrainCreateAccountParameters {
                 "If this problem persists, contact your instructor.", element.getText());
     }
 
-    @Then("^close web browser P")
+    @And("^close web browser acap_feature")
     public void closeWebBrowserP() {
         //Close webBrowser
         //driver.quit();
