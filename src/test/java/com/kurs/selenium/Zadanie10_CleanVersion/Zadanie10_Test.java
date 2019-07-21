@@ -40,6 +40,6 @@ public class Zadanie10_Test {
 
     @AfterClass
     public static void tearDown() throws Exception {
-        //Zadanie10_Gadgets.closeWebBrowser();
+        //Zadanie10_Gadgets.closeWebBrowserP();
     }
 }
