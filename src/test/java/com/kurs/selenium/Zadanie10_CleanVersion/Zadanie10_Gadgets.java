@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class Zadanie10_Gadgets {
     public static WebDriver driver;
 
-    static void openWebPage(String webPageAddress) {
+    void openWebPage(String webPageAddress) {
         System.setProperty("webdriver.gecko.driver",
                 "src/test/resources/geckodriver");
         driver = new FirefoxDriver();
@@ -139,7 +139,7 @@ public class Zadanie10_Gadgets {
         return inputText;
     }
 
-    public static void closeWebBrowser() {
+    void closeWebBrowser() {
         driver.quit();
     }
 }

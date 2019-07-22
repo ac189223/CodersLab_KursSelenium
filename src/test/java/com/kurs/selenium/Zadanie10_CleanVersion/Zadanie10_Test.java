@@ -5,11 +5,11 @@ import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Zadanie10_Test {
-    private Zadanie10_Gadgets gadget = new Zadanie10_Gadgets();
+    private static Zadanie10_Gadgets gadget = new Zadanie10_Gadgets();
 
     @BeforeClass
     public static void setUp() {
-        Zadanie10_Gadgets.openWebPage("https://katalon-test.s3.amazonaws.com/demo-aut/dist/html/form.html");
+        gadget.openWebPage("https://katalon-test.s3.amazonaws.com/demo-aut/dist/html/form.html");
     }
 
     @Test
@@ -40,6 +40,6 @@ public class Zadanie10_Test {
 
     @AfterClass
     public static void tearDown() throws Exception {
-        //Zadanie10_Gadgets.closeWebBrowserP();
+        gadget.closeWebBrowser();
     }
 }
