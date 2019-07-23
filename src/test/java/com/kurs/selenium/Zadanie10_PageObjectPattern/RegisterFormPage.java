@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class Zadanie10_POP_Gadgets {
+public class RegisterFormPage {
     public static WebDriver driver;
 
     void openWebPage(String webPageAddress) {
@@ -68,9 +68,7 @@ public class Zadanie10_POP_Gadgets {
     @FindBy(id = "expectation")
     private WebElement parentElementForExpectationsElements;
 
-    void enterFirstName(String firstName) {
-        ifDisplayed_thenFillIn(this.firstNameElement, firstName);
-    }
+    void enterFirstName(String firstName) { ifDisplayed_thenFillIn(this.firstNameElement, firstName); }
 
     void enterLastName(String lastName) {
         ifDisplayed_thenFillIn(this.lastNameElement, lastName);
@@ -84,29 +82,19 @@ public class Zadanie10_POP_Gadgets {
         ifDisplayed_thenFillIn(this.addressElement, address);
     }
 
-    void enterEmail(String email) {
-        ifDisplayed_thenFillIn(this.emailElement, email);
-    }
+    void enterEmail(String email) { ifDisplayed_thenFillIn(this.emailElement, email); }
 
-    void enterPassword(String password) {
-        ifDisplayed_thenFillIn(this.passwordElement, password);
-    }
+    void enterPassword(String password) { ifDisplayed_thenFillIn(this.passwordElement, password); }
 
-    void enterCompany(String company) {
-        ifDisplayed_thenFillIn(this.companyElement, company);
-    }
+    void enterCompany(String company) { ifDisplayed_thenFillIn(this.companyElement, company); }
 
-    void enterComment(String comment) {
-        ifDisplayed_thenFillIn(this.commentElement, comment);
-    }
+    void enterComment(String comment) { ifDisplayed_thenFillIn(this.commentElement, comment); }
 
     void chooseRole() {
         chooseFromTheList(this.parentElementForRoleElements,1);
     }
 
-    void chooseTwoExpectations() {
-        chooseFromTheList(this.parentElementForExpectationsElements,2);
-    }
+    void chooseTwoExpectations() { chooseFromTheList(this.parentElementForExpectationsElements,2); }
 
     private void ifDisplayed_thenFillIn(WebElement element, String inputText) {
         ifDisplayed(element);
@@ -176,9 +164,7 @@ public class Zadanie10_POP_Gadgets {
         return label.getText();
     }
 
-    private void checkIfListDisplayed(List<WebElement> items) {
-        for (WebElement item : items) ifDisplayed(item);
-    }
+    private void checkIfListDisplayed(List<WebElement> items) { for (WebElement item : items) ifDisplayed(item); }
 
     void chooseGender() {
         checkIfListDisplayed(this.genderList);
@@ -198,9 +184,7 @@ public class Zadanie10_POP_Gadgets {
         printOut(labelText, inputText);
     }
 
-    private void printOut(String labelText, String inputText) {
-        System.out.println(labelText + " : " + inputText);
-    }
+    private void printOut(String labelText, String inputText) { System.out.println(labelText + " : " + inputText); }
 
     private String chooseItemsAndMarkThem(List<WebElement> items, int qty, String itemsLabelsLocation) {
         String inputText = "";
@@ -216,7 +200,5 @@ public class Zadanie10_POP_Gadgets {
         return inputText;
     }
 
-    public void closeWebBrowser() {
-        driver.quit();
-    }
+    void closeWebBrowser() { driver.quit(); }
 }

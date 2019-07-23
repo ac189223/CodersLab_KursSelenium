@@ -12,11 +12,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class aavtrainCreateAccountParameters {
+public class AavtrainCreateAccountFirst {
     private WebDriver driver;
 
-    @Given("^an open browser with http://aavtrain\\.com/ acap_feature")
-    public void anOpenBrowserWithHttpAavtrainComP() {
+    @Given("^an open browser with http://aavtrain\\.com/ aca_feature$")
+    public void anOpenBrowserWithHttpAavtrainCom() {
         // Configure of drivers for webBrowser
         System.setProperty("webdriver.gecko.driver",
                 "src/test/resources/geckodriver");
@@ -28,8 +28,8 @@ public class aavtrainCreateAccountParameters {
         driver.get("http://aavtrain.com/");
     }
 
-    @When("^button First Time Students Register Here is clicked acap_feature")
-    public void buttonFirstTimeStudentsRegisterHereIsClickedP() {
+    @When("^button First Time Students Register Here is clicked aca_feature$")
+    public void buttonFirstTimeStudentsRegisterHereIsClicked() {
         // Find user creation button
         WebElement element = (driver.findElement(By.cssSelector("div.bodytxt")).findElement(By.xpath(".//a")));
         // Click this button
@@ -38,34 +38,34 @@ public class aavtrainCreateAccountParameters {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @Then("^form on https://aavtrain\\.com/create_user\\.asp opens acap_feature")
-    public void formOnHttpsAavtrainComCreate_userAspOpensP() {
+    @Then("^form on https://aavtrain\\.com/create_user\\.asp opens aca_feature$")
+    public void formOnHttpsAavtrainComCreate_userAspOpens() {
         // Check if current url is an expected one
         Assert.assertEquals("https://aavtrain.com/create_user.asp", driver.getCurrentUrl());
     }
 
-    @And("^user fills in required fields: first name (.*), last name (.*), email (.*), user name (.*), address (.*), city (.*), state (.*), zip code (.*), password (.*) acap_feature$")
-    public void userFillsInRequiredFieldsP(String  firstName, String lastName, String email, String userName, String address, String city, String state, String zipCode, String password) {
-         // Input data
-        driver.findElement(By.name("first_name")).sendKeys(firstName);
-        driver.findElement(By.name("last_name")).sendKeys(lastName);
-        driver.findElement(By.name("email")).sendKeys(email);
-        driver.findElement(By.name("user_name")).sendKeys(userName);
-        driver.findElement(By.name("address1")).sendKeys(address);
-        driver.findElement(By.name("city")).sendKeys(city);
-        driver.findElement(By.name("prov")).sendKeys(state);
-        driver.findElement(By.name("zip")).sendKeys(zipCode);
-        driver.findElement(By.name("password")).sendKeys(password);
+    @And("^user fills in all required fields aca_feature$")
+    public void userFillsInAllRequiredFields() {
+        // Input data
+        driver.findElement(By.name("first_name")).sendKeys("James");
+        driver.findElement(By.name("last_name")).sendKeys("Butt");
+        driver.findElement(By.name("email")).sendKeys("jbutt@gmail.com");
+        driver.findElement(By.name("user_name")).sendKeys("jambut");
+        driver.findElement(By.name("address1")).sendKeys("6649 N Blue Gum St");
+        driver.findElement(By.name("city")).sendKeys("New Orleans");
+        driver.findElement(By.name("prov")).sendKeys("LA");
+        driver.findElement(By.name("zip")).sendKeys("70116");
+        driver.findElement(By.name("password")).sendKeys("jambut123");
     }
 
-    @And("^click Submit button acap_feature")
-    public void clickSubmitButtonP() {
+    @And("^click Submit button aca_feature$")
+    public void clickSubmitButton() {
         // Click submit
         driver.findElement(By.name("Submit")).click();
     }
 
-    @Then("^error is displayed acap_feature")
-    public void errorIsDisplayedP() {
+    @Then("^error is displayed aca_feature$")
+    public void errorIsDisplayed() {
         // Find error message element (bold)
         WebElement element = (driver.findElement(By.cssSelector("div.errortextB")).findElement(By.xpath(".//strong")));
         // Check if message is an expected one
@@ -74,9 +74,10 @@ public class aavtrainCreateAccountParameters {
                 "If this problem persists, contact your instructor.", element.getText());
     }
 
-    @And("^close web browser acap_feature")
-    public void closeWebBrowserP() {
+    @And("^close web browser aca_feature$")
+    public void closeWebBrowser() {
         //Close webBrowser
-        //driver.quit();
+        driver.quit();
     }
+
 }

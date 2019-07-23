@@ -9,5 +9,5 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = "src/test/java/com/kurs/cucumber/features/google-text-search.feature",
         plugin = {"pretty","html:out"})
 
-public class GoogleSearchTest {
+public class GoogleSearchFirstTest {
 }

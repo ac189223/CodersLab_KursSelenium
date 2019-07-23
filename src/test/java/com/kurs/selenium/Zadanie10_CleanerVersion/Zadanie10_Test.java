@@ -1,4 +1,4 @@
-package com.kurs.selenium.Zadanie10_CleanVersion;
+package com.kurs.selenium.Zadanie10_CleanerVersion;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
