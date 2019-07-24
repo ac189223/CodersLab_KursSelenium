@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/com/kurs/cucumber/features/aavtrain-create-account-pop.feature",
+@CucumberOptions(features = "src/test/java/com/kurs/cucumber/features/newtours-create-account-parameters.feature",
         plugin = {"pretty","html:out"})
 
-public class AavtrainCreateAccountPOPTest {
+public class NewtoursCreateAccountParametersTest {
 }

@@ -2,11 +2,16 @@ package com.kurs.cucumber.tests;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AavtrainPageObjectCreateAccountPage extends AavtrainPageObject {
+
+    void findRequiredFields(WebDriver driver) {
+        PageFactory.initElements(driver,this);
+    }
 
     @FindBy(name = "first_name")
     private WebElement inputFirstNameElement;
@@ -58,7 +63,7 @@ public class AavtrainPageObjectCreateAccountPage extends AavtrainPageObject {
 
     void submitForm() { submitButton.click(); }
 
-    void checkSubmissionErrorText() {
+    void checkSubmissionErrorText(WebDriver driver) {
         // Find error message element (bold)
         WebElement element = (driver.findElement(By.cssSelector("div.errortextB")).findElement(By.xpath(".//strong")));
         // Check if message is an expected one

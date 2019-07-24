@@ -4,31 +4,38 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class AavtrainCreateAccountPOP {
+public class AavtrainPOPCreateAccount {
+    static WebDriver driver;
     public AavtrainPageObjectWelcomePage aavtrainWelcomePage = new AavtrainPageObjectWelcomePage();
+    public AavtrainPageObjectCreateAccountPage aavtrainCreateAccountPage = new AavtrainPageObjectCreateAccountPage();
 
     @Given("^an open browser with http://aavtrain\\.com/ acapop_feature$")
     public void openBrowserWithAavtrain() {
-        aavtrainWelcomePage.openWebPage("http://aavtrain.com/");
-    }
+        System.setProperty("webdriver.gecko.driver",
+                "src/test/resources/geckodriver");
+        driver = new FirefoxDriver();
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
+        driver.get("http://aavtrain.com/");
+        }
 
     @When("^button First Time Students Register Here is clicked acapop_feature$")
     public void registrationButtonClick() {
-        aavtrainWelcomePage.registrationButtonClick();
+        aavtrainWelcomePage.registrationButton(driver).click();
+        aavtrainWelcomePage.wait(driver);
     }
 
     @Then("^form on https://aavtrain\\.com/create_user\\.asp opens acapop_feature$")
     public void registrationFormOpens() {
-        aavtrainWelcomePage.confirmWebAddress("https://aavtrain.com/create_user.asp");
+        aavtrainWelcomePage.confirmWebAddress("https://aavtrain.com/create_user.asp", driver);
     }
-
-    AavtrainPageObjectCreateAccountPage aavtrainCreateAccountPage = new AavtrainPageObjectCreateAccountPage();
-
 
     @And("^user fills in all required fields acapop_feature$")
     public void userFillsInAllRequiredFields() {
-        aavtrainCreateAccountPage.openWebPage("https://aavtrain.com/create_user.asp");
+        aavtrainCreateAccountPage.findRequiredFields(driver);
         // Input data
         aavtrainCreateAccountPage.enterFirstName("James");
         aavtrainCreateAccountPage.enterLastName("Butt");
@@ -48,12 +55,12 @@ public class AavtrainCreateAccountPOP {
 
     @Then("^error is displayed acapop_feature$")
     public void checkIfError() {
-        aavtrainCreateAccountPage.checkSubmissionErrorText();
+        aavtrainCreateAccountPage.checkSubmissionErrorText(driver);
     }
 
     @And("^close web browser acapop_feature$")
     public void closeWebBrowser() {
-        aavtrainCreateAccountPage.closeWebBrowser();
+        driver.quit();
     }
 
 }
