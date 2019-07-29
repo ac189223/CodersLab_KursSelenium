@@ -47,13 +47,13 @@ public class MainPage extends PageObject {
     }
 
     private void solution(int i, WebDriver driver) {
-        if (i == 0) { /*SortablePage.sortableSolution(driver);*/ }
-        else if (i == 1) { /*SelectablePage.selectableSolution(driver);*/ }
-        else if (i == 2) { /*ResizablePage.resizableSolution(driver); */}
-        else if (i == 3) { /*DroppablePage.droppableSolution(driver); */}
-        else if (i == 4) { /*DraggablePage.draggableSolution(driver); */}
-        else if (i == 5) { SolutionKeyboardEventsSampleFormPage.SKESFSolution(driver); }
-        else if (i == 6) { solutionTooltipAndDoubleClick(); }
+        if (i == 0) { SortablePage.sortableSolution(driver); }
+//        else if (i == 1) { SelectablePage.selectableSolution(driver); }
+//        else if (i == 2) { ResizablePage.resizableSolution(driver); }
+//        else if (i == 3) { DroppablePage.droppableSolution(driver); }
+//        else if (i == 4) { DraggablePage.draggableSolution(driver); }
+//        else if (i == 5) { SolutionKeyboardEventsSampleFormPage.SKESFSolution(driver); }
+        else if (i == 6) { TooltipAndDoubleClickPage.TADCSolution(driver); }
         else if (i == 7) { solutionTooltip(); }
         else if (i == 8) { solutionTabs(); }
         else if (i == 9) { solutionSpinner(); }
